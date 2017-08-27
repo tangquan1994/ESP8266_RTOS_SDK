@@ -28,6 +28,7 @@
 #include "pwm.h"
 #include "gpio.h"
 #include "espconn.h"
+#include "spi.h"
 
 #define SERVER_IP		"192.168.1.125"
 #define SERVER_PORT		5000
@@ -229,38 +230,39 @@ void task1(void *pvParameters)
 	}
 	
 STATION_GOT_IP:
-	espconn_init();
-	if(espconn_connect(&esp_connection) == 0)
-	{
-		printf("espconn_connect success\r\n");
- 		while(1)
-		{
-			if(++timeout == 10)
-				break;
-			if(esp_connection.state == ESPCONN_CONNECT)
-			{
-				printf("connected to server\r\n");
-				break;
-			}
-			vTaskDelay(1000/portTICK_RATE_MS);
-		}
+	// espconn_init();
+	// if(espconn_connect(&esp_connection) == 0)
+	// {
+		// printf("espconn_connect success\r\n");
+ 		// while(1)
+		// {
+			// if(++timeout == 10)
+				// break;
+			// if(esp_connection.state == ESPCONN_CONNECT)
+			// {
+				// printf("connected to server\r\n");
+				// break;
+			// }
+			// vTaskDelay(1000/portTICK_RATE_MS);
+		// }
 
-		if(timeout == 10)
-		{
-			printf("connection timeout\r\n");
-			espconn_disconnect(&esp_connection);
-		}
-		else
-		{
-			espconn_send(&esp_connection,"tangquan",8);
-		}
+		// if(timeout == 10)
+		// {
+			// printf("connection timeout\r\n");
+			// espconn_disconnect(&esp_connection);
+		// }
+		// else
+		// {
+			// espconn_send(&esp_connection,"tangquan",8);
+		// }
 		
-	}
-	else
-	{
-		printf("espconn_connect failed\r\n");
-	}
+	// }
+	// else
+	// {
+		// printf("espconn_connect failed\r\n");
+	// }
 
+	spi_init();
 	
 	while (1)
 	{
@@ -272,6 +274,7 @@ STATION_GOT_IP:
 		else
 			gpio_output_set(BIT2, 0, BIT2, 0);
 	
+		spi_send(0xaa,0xbb);
 
 		for(i=0;i<1000;i++)
 			os_delay_us(1000);

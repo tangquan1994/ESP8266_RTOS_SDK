@@ -82,4 +82,7 @@
  /mnt/hgfs/vmshare/esp8266/ESP8266_RTOS_SDK/include/espressif/pwm.h \
  /mnt/hgfs/vmshare/esp8266/ESP8266_RTOS_SDK/driver_lib/include/gpio.h \
  /mnt/hgfs/vmshare/esp8266/ESP8266_RTOS_SDK/include/espressif/esp8266/gpio_register.h \
- /mnt/hgfs/vmshare/esp8266/ESP8266_RTOS_SDK/include/espressif/espconn.h
+ /mnt/hgfs/vmshare/esp8266/ESP8266_RTOS_SDK/include/espressif/espconn.h \
+ spi.h \
+ /mnt/hgfs/vmshare/esp8266/ESP8266_RTOS_SDK/driver_lib/include/spi_interface.h \
+ /mnt/hgfs/vmshare/esp8266/ESP8266_RTOS_SDK/driver_lib/include/spi_register.h
