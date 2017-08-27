@@ -261,8 +261,6 @@ STATION_GOT_IP:
 	// {
 		// printf("espconn_connect failed\r\n");
 	// }
-
-	spi_init();
 	
 	while (1)
 	{
@@ -273,8 +271,6 @@ STATION_GOT_IP:
 			gpio_output_set(0, BIT2, BIT2, 0);
 		else
 			gpio_output_set(BIT2, 0, BIT2, 0);
-	
-		spi_send(0xaa,0xbb);
 
 		for(i=0;i<1000;i++)
 			os_delay_us(1000);
