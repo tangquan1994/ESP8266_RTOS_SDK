@@ -1,5 +1,10 @@
 siprj.si4project
 bin
-examples/project_template/.output
 examples/project_template/user/.output
+examples/project_template/.output
+examples/project_template/sample_lib
+*.o
+
+examples/project_template/user/.output
+examples/project_template/.output
 examples/project_template/sample_lib
