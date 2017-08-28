@@ -349,16 +349,16 @@ void UART_intr_handler()
 *******************************************************************************/
 void user_init(void)
 {	
-    UART_ConfigTypeDef uart_config;
-    uart_config.baud_rate	= BIT_RATE_115200;
-    uart_config.data_bits	= UART_WordLength_8b;
-    uart_config.parity		= USART_Parity_None;
-    uart_config.stop_bits	= USART_StopBits_1;
-    uart_config.flow_ctrl	= USART_HardwareFlowControl_None;
-    uart_config.UART_RxFlowThresh = 120;
-    uart_config.UART_InverseMask = UART_None_Inverse;
-    UART_ParamConfig(UART1, &uart_config);
-    
+	UART_ConfigTypeDef uart_config;
+	uart_config.baud_rate	= BIT_RATE_115200;
+	uart_config.data_bits	= UART_WordLength_8b;
+	uart_config.parity		= USART_Parity_None;
+	uart_config.stop_bits	= USART_StopBits_1;
+	uart_config.flow_ctrl	= USART_HardwareFlowControl_None;
+	uart_config.UART_RxFlowThresh = 120;
+	uart_config.UART_InverseMask = UART_None_Inverse;
+	UART_ParamConfig(UART1, &uart_config);
+	
 	UART_SetBaudrate(UART0,BIT_RATE_115200);
 	UART_SetBaudrate(UART1,BIT_RATE_115200);
 	UART_SetPrintPort(UART1);	//串口1用于打印调试信息，串口0用于数据传输
@@ -372,10 +372,7 @@ void user_init(void)
 	printf("ESP8266 chip ID:0x%x\n", system_get_chip_id());
 	system_print_meminfo();
 	
-	
-	
 	xTaskCreate(task1, "task1", 256, NULL, 2, NULL);
-	
 }
 
 
